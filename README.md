@@ -1,3 +1,2 @@
 # game
-
-## click the circles!
+click the circles!
