@@ -1,9 +1,35 @@
+/*Other stuff to do 
+make settings to make the circles bigger/smaller
+fix circles not being on screen and going off screen
+make press start button delete after being clicked
+*/
+
+console.log("Hello World!");
+
+let currentNum = 1;
+let level = 1;
+
 function start(){
     console.log("Game starting!")
+    startLevel1();
+}
+
+function startLevel1 () {
+    level = 1;
+    currentNum = 1;
     setTimeout(createCircle, 500, 1);
     setTimeout(createCircle, 1000, 2);
     setTimeout(createCircle, 1500, 3);
+}
 
+function startLevel2 () {
+    level = 2;
+    currentNum = 1;
+    setTimeout(createCircle, 500, 1);
+    setTimeout(createCircle, 1000, 2);
+    setTimeout(createCircle, 1500, 3);
+    setTimeout(createCircle, 2000, 4);
+    setTimeout(createCircle, 2500, 5);
 }
 
 function createCircle(num){
@@ -12,8 +38,8 @@ function createCircle(num){
 
     //styles
     circle.innerText = num;
-    circle.style.width = "180px";
-    circle.style.height = "180px";
+    circle.style.width = "100px";
+    circle.style.height = "100px";
     circle.style.backgroundColor = "Red";
     circle.style.borderRadius = "50%";
     circle.style.textAlign = "center";
@@ -25,13 +51,11 @@ function createCircle(num){
     circle.style.left = getRandomX() + "px";
     circle.style.top = getRandomY() + "px";
 
-
     //add to page
     document.body.appendChild(circle);
 
     //make it clickable
     circle.addEventListener("click", checkForRemove);
-
 
 }
 
@@ -49,5 +73,15 @@ function getRandomY() {
 
 function checkForRemove(event) {
     let circle = event.target;
-    console.log(circle.innerText)
+    if (circle.innerText == currentNum) {
+        circle.remove();
+        currentNum++;
+        if (currentNum == 4 && level == 1)  {
+            startLevel2();
+        }
+        else if (currentNum == 5 && level == 2){
+            startLevel3();
+        }
+    }
 }
+
