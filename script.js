@@ -32,6 +32,18 @@ function startLevel2 () {
     setTimeout(createCircle, 2500, 5);
 }
 
+function startLevel3 () {
+    level = 3;
+    currentNum = 1;
+    setTimeout(createCircle, 500, 1);
+    setTimeout(createCircle, 1000, 2);
+    setTimeout(createCircle, 1500, 3);
+    setTimeout(createCircle, 2000, 4);
+    setTimeout(createCircle, 2500, 5);
+    setTimeout(createCircle, 3000, 6);
+    setTimeout(createCircle, 3500, 7);
+}
+
 function createCircle(num){
     //div = circle!
     let circle = document.createElement("div");
@@ -76,11 +88,14 @@ function checkForRemove(event) {
     if (circle.innerText == currentNum) {
         circle.remove();
         currentNum++;
-        if (currentNum == 4 && level == 1)  {
+        if (level == 1 && currentNum == 4) {
             startLevel2();
         }
-        else if (currentNum == 5 && level == 2){
+        else if (level == 2 && currentNum == 6){
             startLevel3();
+        }
+        else if (level == 3 && currentNum == 8){
+            alert("You win!");
         }
     }
 }
